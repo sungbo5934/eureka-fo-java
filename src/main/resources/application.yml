@@ -1,0 +1,52 @@
+---
+spring:
+  profiles: local
+
+server:
+  port: 8761
+
+eureka:
+  instance:    hostname: localhost
+  server:
+    enable-self-preservation: true
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+---
+spring:
+  profiles: dev
+
+server:
+  port: 8761 
+  
+eureka:
+  server:    enable-self-preservation: true
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+  
+---
+spring:
+  profiles: prd
+
+server:
+  port: 8761
+
+aws:
+  ec2:
+    serviceIp:
+      first: 999.99.99
+      second: 888.88.88
+      
+# 이중화 방안 생각
+eureka:
+  server:
+    enable-self-preservation: true
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    serviceUrl:
+      defaultZone: http://${aws.ec2.serviceIp.first}:${server.port}/eureka/, http://${aws.ec2.serviceIp.second}:${server.port}/eureka/
