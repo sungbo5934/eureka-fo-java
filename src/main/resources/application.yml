@@ -6,9 +6,9 @@ server:
   port: 8761
 
 eureka:
-  instance:    hostname: localhost
+  instance:    prefer-ip-address: true # 서비스간 통신 시 hostname 보다 ip 를 우선 사용     hostname: localhost
   server:
-    enable-self-preservation: true
+    enable-self-preservation: false
   client:
     register-with-eureka: false
     fetch-registry: false
