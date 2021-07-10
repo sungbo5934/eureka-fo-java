@@ -9,6 +9,22 @@ spring:
 server:
   port: 8761
 
+#서버 config 설명
+#eureka.client
+#  register-with-eureka : 유레카에 등록할지 여부.
+#  fetch-registry : 유레카에서 조회할지 여부
+#  registry-fetch-interval-seconds: 클라이언트 측에서 eureka registry를 캐싱하는 시간
+# disable-delta: 마지막으로 시도한 값에서 변경된 내용만 가지고 오도록 설정. false로 설정 시 바뀌지 않은 내용도 다 가지고 오게 된다.
+#eureka.server
+#  enable-self-preservation : 자기보존모드. true일 경우 동작. 네트워크 같은 장애 발생 시 모든 서비스가 eureka에서 일괄 해제되는 현상을 막기 위해 사용. Real에서는 항상 true 여야 한다.
+#  eviction-interval-time-in-ms: client로부터 heartbeat가 계속 수신되는지 점검하는 일이다. 셋팅 된 시간동안 heartbeat가 없다면 제거 하게 된다.
+#  response-cache-update-interval-ms: eureka rest api에서 응답을 캐시하는 시간. 해당 시간이 지나야지만 rest api에서 client 등록 정보가 바뀐 것을 표시해 준다.
+#eureka.instance
+#  instance-id : eureka에 등록되는 id 값. 중복되게 되는 경우 마지막 instance만 동작하게 된다.
+#  lease-renewal-interval-in-seconds : health heartbeat 시간. server가 아닌 client에서 셋팅한다. 따라서 client 마다 다른 기준으로 보낼 수 있게 된다.
+#  lease-expiration-duration-in-seconds: 해당 시간 동안 heartbeat이 수신되지 않으면 eureka에서 해당 instance를 제거한다. 이 역시 server가 아닌 instance에서 셋팅한다.
+#  prefer-ip-address: 호스트 대신 ip를 사용하도록 한다. eureka dashboard에서 해당 instance를 누르게 되면 ip로 이동하게 된다.
+
 eureka:
   instance:    prefer-ip-address: true # 서비스간 통신 시 hostname 보다 ip 를 우선 사용     hostname: localhost
   server:
