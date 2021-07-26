@@ -26,14 +26,15 @@ server:
 #  prefer-ip-address: 호스트 대신 ip를 사용하도록 한다. eureka dashboard에서 해당 instance를 누르게 되면 ip로 이동하게 된다.
 
 eureka:
-  instance:    prefer-ip-address: true # 서비스간 통신 시 hostname 보다 ip 를 우선 사용     hostname: localhost
-  server:
-    enable-self-preservation: false
-  client:
-    register-with-eureka: false
-    fetch-registry: false
-    serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+   instance:      prefer-ip-address: true # 서비스간 통신 시 hostname 보다 ip 를 우선 사용       hostname: localhost
+   server:
+      response-cache-update-interval-ms: 1000 # 캐쉬 리프레쉬 서비스 등록 여부 확인 주기 (ms)
+      enable-self-preservation: false
+   client:
+      register-with-eureka: false
+      fetch-registry: false
+      serviceUrl:
+         defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
 
 ---
 spring:
